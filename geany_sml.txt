@@ -1,0 +1,32 @@
+custom filetype sml in geany
+----------------------------
+ref: https://geany.org/manual/index.html#custom-filetypes
+
+starten van de caml filetype
+
+cp /usr/share/geany/filedefs/filetypes.caml ~/.config/geany/filedefs/filetypes.sml.conf
+
+
+in filetype_extentions.conf (via menu geany) :
+ 
+sml=*.sml;
+[Groups]
+Programming=Arduino;Clojure;CUDA;Cython;Genie;Scala;sml;
+
+in filetypes.sml.conf (via menu geany):
+[settings]
+# default extension used when saving files
+extension=sml
+
+lexer_filetype=CAML
+
+[styling=CAML] ... hoofdletters? heeft dit invloed ?
+
+[build_settings]
+run_cmd=sml "./%f"
+
+-> dit laatste blijkt niet te werken. Beter in menu 'set Build commands':
+ 
+sml "./%f"
+of rlwrap sml "./%f" (rlwrap is een 'editline' toevoeging voor de repl)
+of rlwrap -p sml "./%f" (-p optie gebruikt kleuren - hier enkel de prompt in rood)
